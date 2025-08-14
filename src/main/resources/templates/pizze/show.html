@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <th:block th:replace="fragments/styles :: bootStyle"></th:block>
+
+    <title>Pizza : [[${pizza.name}]]</title>
+</head>
+
+<body>
+    <header>
+        <th:block th:replace="fragments/nav"></th:block>
+
+    </header>
+    <main class="container" th:object="${pizza}">
+        <h1>[[*{name}]]</h1>
+        <hr />
+        <section class="row justify-content-center">
+            <h2>[[*{desc}]]</h2>
+            <h3>[[*{price}]]€</h3>
+            <img th:src="*{url}" alt="">
+        </section>
+
+    </main>
+</body>
+
+</html>
