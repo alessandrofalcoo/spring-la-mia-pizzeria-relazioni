@@ -27,8 +27,10 @@
                     <div class="row justify-content-center">
                         <div class="col-8">
 
-                            <form id="pizza-form" th:action="@{/offers/create}" th:object="${specialOffer}"
+                            <form id="offers-form" th:action="@{/offers/create}" th:object="${specialOffer}"
                                 method="post">
+
+                                <input type="hidden" th:field="*{pizza}" id="linked-pizza">
 
                                 <div class="mb-3" th:if="${#fields.hasErrors()}">
                                     <ul class="alert alert-danger ps-5">
@@ -36,23 +38,20 @@
                                     </ul>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="name" class="form-label">Name:</label>
-                                    <input type="text" class="form-control" id="name" th:field="*{name}">
+                                    <label for="beginDate" class="form-label">Begin Date:</label>
+                                    <input type="date" class="form-control" id="beginDate" th:field="*{beginDate}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="description" class="form-label">Description:</label>
-                                    <input type="text" class="form-control" id="description" th:field="*{desc}">
+                                    <label for="endDate" class="form-label">End Date:</label>
+                                    <input type="date" class="form-control" id="endDate" th:field="*{endDate}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="price" class="form-label">Price:</label>
-                                    <input type="number" min="0" class="form-control" id="price" th:field="*{price}">
+                                    <label for="title" class="form-label">Title:</label>
+                                    <input type="text" min="0" class="form-control" id="title" th:field="*{title}">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="url" class="form-label">Link:</label>
-                                    <input type="url" min="0" class="form-control" id="url" th:field="*{url}">
-                                </div>
+
                                 <div class="mb-3 d-flex justify-content-between">
-                                    <input type="submit" class="btn btn-primary" value="Create a new pizza">
+                                    <input type="submit" class="btn btn-primary" value="Create a new offer">
                                     <input type="reset" class="btn btn-warning" id="name" value="Reset all fields">
                                 </div>
                             </form>

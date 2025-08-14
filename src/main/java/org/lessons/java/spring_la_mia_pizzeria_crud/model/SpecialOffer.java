@@ -20,7 +20,6 @@ public class SpecialOffer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    // pizza da cui dipendo
     @ManyToOne
     @JoinColumn(name = "pizza_id", nullable = false)
     private Pizza pizza;

@@ -15,12 +15,48 @@
 
     </header>
     <main class="container" th:object="${pizza}">
-        <h1>[[*{name}]]</h1>
+        <h1> [[*{name}]]</h1>
         <hr />
         <section class="row justify-content-center">
             <h2>[[*{desc}]]</h2>
             <h3>[[*{price}]]€</h3>
             <img th:src="*{url}" alt="">
+        </section>
+
+        <section class="row mb-3 offers my-4">
+            <div class="col-12" th:unless="${pizza.getSpecialOffers().size() > 0}">
+                <div class="alert alert-warning fw-bold">
+                    There are no offers for this Pizza
+                </div>
+            </div>
+            <div class="col-12" th:if="${pizza.getSpecialOffers().size() > 0}">
+                <h2>
+                    Special Offers:
+                </h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Begin Date</th>
+                            <th>End Date</th>
+                            <th>Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="specialOffer : ${pizza.specialOffers}">
+                            <td>[[${specialOffer.id}]]</td>
+                            <td>[[${specialOffer.beginDate}]]</td>
+                            <td>[[${specialOffer.endDate}]]</td>
+                            <td>[[${specialOffer.title}]]</td>
+                            <td>
+                                <a th:href="@{/offers/edit/{id}(id=${specialOffer.id})}"
+                                    class="btn btn-success btn-sm">Update</a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
         </section>
 
     </main>

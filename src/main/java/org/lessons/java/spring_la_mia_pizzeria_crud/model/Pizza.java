@@ -43,12 +43,13 @@ public class Pizza {
     public Pizza() {
     }
 
-    public Pizza(Integer id, String name, String desc, String url, int price) {
+    public Pizza(Integer id, String name, String desc, String url, int price, List<SpecialOffer> specialOffers) {
         this.id = id;
         this.name = name;
         this.desc = desc;
         this.url = url;
         this.price = price;
+        this.specialOffers = specialOffers;
     }
 
     public Integer getId() {
@@ -89,6 +90,14 @@ public class Pizza {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public List<SpecialOffer> getSpecialOffers() {
+        return this.specialOffers;
+    }
+
+    public void setSpecialOffers(List<SpecialOffer> specialOffers) {
+        this.specialOffers = specialOffers;
     }
 
     @Override
