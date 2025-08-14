@@ -1,10 +1,13 @@
 package org.lessons.java.spring_la_mia_pizzeria_crud.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -31,6 +34,11 @@ public class Pizza {
     @NotNull(message = "price must not be null")
     @Positive(message = "price must be greater than zero")
     private int price;
+
+    // aggiunta di una relazione tra una pizza e 0,1 o piú prestiti (one-to-many)
+
+    @OneToMany(mappedBy = "pizza")
+    private List<SpecialOffer> specialOffers;
 
     public Pizza() {
     }

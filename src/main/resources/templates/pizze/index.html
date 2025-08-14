@@ -32,8 +32,13 @@
                                 <a th:href="@{'/pizze/' + *{id}}">[[*{name}]]</a>
                             </td>
                             <td>[[*{desc}]]</td>
-                            <td>[[*{price}]]</td>
+                            <td>[[*{price}]]€</td>
                             <td><img th:src="*{url}" alt=""></td>
+                            <td>
+                                <a th:href="@{/pizze/{id}/offer(id=${pizza.id})}"
+                                    class="btn btn-outline-primary btn-sm">Create
+                                    an offer</a>
+                            </td>
                             <td>
                                 <a th:href="@{/pizze/{id}(id=${pizza.id})}" class="btn btn-primary btn-sm">Show</a>
                             </td>

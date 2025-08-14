@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import jakarta.validation.Valid;
 
 import org.lessons.java.spring_la_mia_pizzeria_crud.model.Pizza;
+import org.lessons.java.spring_la_mia_pizzeria_crud.model.SpecialOffer;
 
 @Controller
 @RequestMapping("/pizze")
@@ -89,6 +90,16 @@ public class PizzaController {
         repository.deleteById(id);
 
         return "redirect:/pizze/index";
+    }
+
+    @GetMapping("/{id}/offer")
+    public String offer(@PathVariable Integer id, Model model) {
+        SpecialOffer specialOffer = new SpecialOffer();
+
+        specialOffer.setPizza(repository.findById(id).get());
+        model.addAttribute("specialOffer", specialOffer);
+
+        return "offers/create";
     }
 
 }
