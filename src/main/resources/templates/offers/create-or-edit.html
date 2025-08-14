@@ -27,8 +27,9 @@
                     <div class="row justify-content-center">
                         <div class="col-8">
 
-                            <form id="offers-form" th:action="@{/offers/create}" th:object="${specialOffer}"
-                                method="post">
+                            <form id="offers-form"
+                                th:action="${edit} ? @{|/offers/edit/${specialOffer.id}|} : @{/offers/create}"
+                                th:object="${specialOffer}" method="post">
 
                                 <input type="hidden" th:field="*{pizza}" id="linked-pizza">
 

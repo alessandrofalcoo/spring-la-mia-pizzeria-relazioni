@@ -27,7 +27,7 @@ public class SpecialOfferController {
             BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-            return "offers/create";
+            return "offers/create-or-edit";
         }
 
         repository.save(formSpecialOffer);
@@ -53,7 +53,7 @@ public class SpecialOfferController {
         }
 
         repository.save(formSpecialOffer);
-        return "redirect:/pizze/index" + formSpecialOffer.getPizza().getId();
+        return "redirect:/pizze/" + formSpecialOffer.getPizza().getId();
 
     }
 }
