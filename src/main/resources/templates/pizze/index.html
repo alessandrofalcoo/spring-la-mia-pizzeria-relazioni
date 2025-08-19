@@ -16,6 +16,9 @@
     <main class="container">
         <section class="row">
             <div class="col-12">
+                <div class="create">
+                    <a th:href="@{/pizze/create}" class="btn btn-primary m-4">Crea una nuova pizza</a>
+                </div>
                 <table class="table" th:if="${pizze.size() > 0}">
                     <thead>
                         <tr>
@@ -54,9 +57,6 @@
                     </tbody>
                 </table>
                 <p th:text="No pizzas are available at the moment" th:unless="${pizze.size() > 0}"></p>
-                <div class="create">
-                    <a th:href="@{/pizze/create}" class="btn btn-primary m-4">Crea una nuova pizza</a>
-                </div>
             </div>
 
         </section>
