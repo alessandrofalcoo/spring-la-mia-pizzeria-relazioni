@@ -38,10 +38,13 @@ public class Pizza {
     @Positive(message = "price must be greater than zero")
     private int price;
 
-    // aggiunta di una relazione tra una pizza e 0,1 o piú prestiti (one-to-many)
+    // aggiunta di una relazione tra una pizza e 0,1 o piú offerte speciali
+    // (one-to-many)
 
     @OneToMany(mappedBy = "pizza")
     private List<SpecialOffer> specialOffers;
+
+    // aggiunta di una relazione tra piú pizze e piú ingredienti (many-to-many)
 
     @ManyToMany
     @JoinTable(name = "pizza_ingredient", joinColumns = @JoinColumn(name = "pizza_id"), inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
