@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -28,6 +28,22 @@
 
                             <form id="pizza-form" th:action="@{/pizze/edit/{id}(id=${pizza.id})}" th:object="${pizza}"
                                 method="post">
+
+                                <div class="mb-3" th:if="${#fields.hasErrors()}">
+                                    <ul class="alert alert-danger ps-5">
+                                        <li th:each="error : ${#fields.allErrors()}" th:text="${error}"></li>
+                                    </ul>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="single-ingredient form-check" th:each="ingredient : ${ingredients}">
+                                        <input type="checkbox" th:field="*{ingredients}"
+                                            th:id="|ingredient-${ingredient.id}|" th:value="${ingredient.id}">
+                                        <label th:for="|ingredient-${ingredient.id}|" class="form-check-label"
+                                            th:text="${ingredient.name}"></label>
+                                    </div>
+                                </div>
+
 
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Name:</label>
